@@ -1,4 +1,3 @@
-/* Style dasar */
 body {
     margin: 0;
     padding: 0;
@@ -18,7 +17,7 @@ body {
     max-width: 400px;
     text-align: center;
     position: relative;
-    width: 90%; /* Mengurangi lebar untuk layar kecil */
+    overflow: hidden; /* Pastikan balon tidak keluar dari kartu */
 }
 
 .card-content h1 {
@@ -38,31 +37,13 @@ body {
     font-style: italic;
 }
 
-button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #e91e63;
-    color: white;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #d81b60;
-}
-
 .balloon {
     position: absolute;
-    width: 40px; /* Ukuran balon lebih kecil untuk mobile */
-    height: 60px; /* Ukuran balon lebih kecil untuk mobile */
-    background-color: #ffeb3b;
+    width: 40px; /* Ukuran balon */
+    height: 60px; /* Ukuran balon */
     border-radius: 50% 50% 0 0;
-    top: 200%;
-    animation: float 5s ease-in-out infinite;
-    transform: translateX(-50%);
-    display: none;
+    animation: float 5s ease-in-out infinite; /* Animasi mengapung */
+    display: none; /* Sembunyikan balon awalnya */
 }
 
 /* Tali balon */
@@ -70,9 +51,8 @@ button:hover {
     content: '';
     position: absolute;
     width: 2px;
-    height: 40px; /* Tali lebih pendek */
-    background-color: #ffeb3b;
-    bottom: -40px;
+    height: 40px; /* Tali balon */
+    bottom: -40px; /* Tali balon */
     left: 50%;
     transform: translateX(-50%);
 }
@@ -80,41 +60,12 @@ button:hover {
 /* Animasi balon */
 @keyframes float {
     0% {
-        transform: translate(-50%, 100%);
+        transform: translate(0, 0); /* Naik dari bawah */
     }
     50% {
-        transform: translate(-50%, -50%);
+        transform: translate(0, -20px); /* Naik lebih tinggi */
     }
     100% {
-        transform: translate(-50%, 100%);
-    }
-}
-
-/* Media queries untuk layar lebih kecil */
-@media (max-width: 600px) {
-    .card {
-        max-width: 100%; /* Maksimalkan lebar pada layar kecil */
-        padding: 15px; /* Sesuaikan padding */
-    }
-
-    .card-content h1 {
-        font-size: 1.2rem; /* Kecilkan teks untuk mobile */
-    }
-
-    .card-content p {
-        font-size: 0.9rem; /* Kecilkan paragraf untuk mobile */
-    }
-
-    button {
-        padding: 8px 15px; /* Sesuaikan ukuran tombol */
-    }
-
-    .balloon {
-        width: 30px; /* Sesuaikan ukuran balon */
-        height: 50px; /* Sesuaikan ukuran balon */
-    }
-
-    .balloon::after {
-        height: 30px; /* Tali balon lebih pendek untuk mobile */
+        transform: translate(0, 0); /* Kembali ke posisi semula */
     }
 }
